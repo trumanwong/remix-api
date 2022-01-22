@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  remix-api:
+    container_name: remix-api
+    image: trumanwl/golang:1.17
+    entrypoint: /bin/bash -c "service supervisor start && export GOPROXY=https://goproxy.io,direct"
+    ports:
+      - "8092:80"
+    restart: always
+    volumes:
+      - /data/docker/golang/remix-api/:/data/docker/golang/remix-api
+      - /var/www:/var/www
+      - /data/docker/golang/remix-api/scripts/supervisor:/etc/supervisor
+    networks:
+      - web
+    tty: true
+    privileged: true
+networks:
+  web:
+    driver: bridge

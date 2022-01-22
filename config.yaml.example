@@ -1,0 +1,66 @@
+http_port: 80
+env: debug
+max_throttle: 1
+mysql:
+  host: your_mysql_host
+  port: your_mysql_port
+  user: your_mysql_user
+  password: your_mysql_password
+  database: your_mysql_database
+  table_prefix:
+redis:
+  addr: your_redis_addr
+  password: your_redis_password
+  prefix: your_redis_prefix
+cache:
+  prefix: your_cache_prefix
+  database: 1
+log:
+  path: /data/docker/golang/remix-api/logs
+  max_day: 10
+  log_driver: file
+elasticsearch:
+  user_name: your_elastic_username
+  password: your_elastic_password
+  addresses:
+    - your_elastic_address
+ali:
+  access_key_id: your_ali_access_key_id
+  access_key_secret: your_ali_access_key_secret
+  end_point: your_ali_end_point
+  end_point_shenzhen: your_ali_end_point_shenzhen
+rabbitmq:
+  url: your_rabbitmq_url
+command:
+  python:
+    command: python3
+    gif_revert_script: /data/docker/golang/remix-api/scripts/reverse.py
+    nokia_sms_script: /data/docker/golang/remix-api/scripts/nokia_sms.py
+  ffmpeg: ffmpeg
+task:
+  remix:
+    template_path: /data/docker/golang/remix-api/scripts/static/templates
+    template_folders:
+      - sorry
+      - kongming
+      - dagong
+      - zhenxiang
+    sentences:
+      - [ 好啊, 就算你是一流工程师, 就算你出报告再完美, 我叫你改报告你就要改, 毕竟我是客户, 客户了不起啊, sorry 客户真的了不起, 以后叫他天天改报告, 天天改 天天改 ]
+      - [ 我从未见过, 有如此厚颜无耻之人 ]
+      - [ 没有钱啊 肯定要做的啊, 不做的话没有钱用, 那你不会去打工啊, 有手有脚的, 打工是不可能打工的, 这辈子都不可能打工的 ]
+      - [ 我就是饿死, 死外边 从这跳下去, 也不会吃你们 一点东西, 真香 ]
+wechat:
+  mini_program:
+    app_id: your_app_id
+    app_secret: your_app_secret
+other:
+  wechat_robot_url: your_wechat_robot_url
+  allow_origins: your_allow_origins
+  jwt_key: your_jwt_key
+  store_path: your_store_path
+  allow_picture_ext: .gif
+qiniu:
+  access_key: your_qiniu_access_key
+  secret_key: your_qiniu_secret_key
+  bucket: your_qiniu_bucket
