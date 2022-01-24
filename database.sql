@@ -18,3 +18,12 @@ CREATE TABLE `tasks` (
                          UNIQUE KEY `uni_user_serial` (`user_id`,`serial`),
                          UNIQUE KEY `uni_uuid_serial` (`uuid`,`serial`)
 ) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `configs` (
+                           `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+                           `type` tinyint unsigned NOT NULL COMMENT '0鬼畜动图',
+                           `content` json NOT NULL COMMENT '配置内容',
+                           `created_at` timestamp NULL DEFAULT NULL,
+                           `updated_at` timestamp NULL DEFAULT NULL,
+                           PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

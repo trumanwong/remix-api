@@ -1,10 +1,6 @@
 package main
 
 import (
-	"remix-api/configs"
-	"remix-api/internal/logs"
-	"remix-api/internal/mq"
-	"remix-api/models"
 	"bufio"
 	"bytes"
 	"fmt"
@@ -13,6 +9,10 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"remix-api/configs"
+	"remix-api/internal/logs"
+	"remix-api/internal/mq"
+	"remix-api/models"
 	"strconv"
 	"strings"
 	"time"
@@ -127,8 +127,6 @@ func main() {
 				remixType, _ := strconv.ParseUint(fmt.Sprintf("%v", task.Other["remix_type"]), 10, 10)
 				tpl := configs.Config.Task.Remix.TemplateFolders[remixType]
 				sentences := strings.Split(fmt.Sprintf("%v", task.Other["text"]), ",")
-				fmt.Println(sentences)
-				fmt.Println(len(sentences), tpl)
 				err = runRemixCommand(tpl, realConvertPath, sentences)
 			} else {
 				cmd := exec.Command(
