@@ -1,6 +1,11 @@
 package main
 
 import (
+	"remix-api/configs"
+	"remix-api/internal/cache"
+	"remix-api/internal/logs"
+	"remix-api/internal/mq"
+	util2 "remix-api/internal/util"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -12,14 +17,15 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	"remix-api/configs"
-	"remix-api/internal/cache"
-	"remix-api/internal/logs"
-	"remix-api/internal/mq"
-	util2 "remix-api/internal/util"
 	"strings"
 	"time"
 )
+
+func init()  {
+	configs.Setup()
+	cache.Setup()
+	mq.Setup()
+}
 
 func main() {
 	ch, err := mq.RabbitMQ.NewChannel()

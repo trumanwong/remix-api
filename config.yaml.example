@@ -40,11 +40,6 @@ command:
 task:
   remix:
     template_path: /data/docker/golang/remix-api/scripts/static/templates
-    template_folders:
-      - sorry
-      - kongming
-      - dagong
-      - zhenxiang
     sentences:
       - [ 好啊, 就算你是一流工程师, 就算你出报告再完美, 我叫你改报告你就要改, 毕竟我是客户, 客户了不起啊, sorry 客户真的了不起, 以后叫他天天改报告, 天天改 天天改 ]
       - [ 我从未见过, 有如此厚颜无耻之人 ]

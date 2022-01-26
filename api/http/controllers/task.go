@@ -1,15 +1,15 @@
 package controllers
 
 import (
+	"remix-api/configs"
+	"remix-api/internal/logs"
+	"remix-api/internal/mq"
+	"remix-api/models"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/trumanwong/go-internal/util"
 	"net/http"
 	"path"
-	"remix-api/configs"
-	"remix-api/internal/logs"
-	"remix-api/internal/mq"
-	"remix-api/models"
 	"strconv"
 	"strings"
 	"time"
@@ -98,11 +98,11 @@ func (this *TaskController) Create(ctx *gin.Context) {
 		// 鬼畜
 		texts := strings.Split(ctx.PostForm("texts"), ",")
 		remixType, err := strconv.ParseUint(ctx.PostForm("remix_type"), 10, 8)
-		arr := append([]string{}, configs.Config.Task.Remix.Sentences[remixType]...)
-		if err != nil || int(remixType) >= len(configs.Config.Task.Remix.Sentences) || len(texts) != len(arr) {
+		if err != nil || int(remixType) >= len(configs.Config.Task.Remix.Sentences) || len(texts) != len(configs.Config.Task.Remix.Sentences[remixType]) {
 			util.Response(ctx, nil, http.StatusBadRequest, "Invalid Params")
 			return
 		}
+		arr := append([]string{}, configs.Config.Task.Remix.Sentences[remixType]...)
 		for i := 0; i < len(arr); i++ {
 			text := strings.Trim(texts[i], " ")
 			text = strings.ReplaceAll(text, ",", " ")

@@ -9,5 +9,5 @@ type Log struct {
 }
 
 func (this Log) IndexName() string {
-	return "qnw_api_logs"
+	return "blog_api_logs"
 }

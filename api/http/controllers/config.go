@@ -1,10 +1,10 @@
 package controllers
 
 import (
+	"remix-api/models"
 	"github.com/gin-gonic/gin"
 	"github.com/trumanwong/go-internal/util"
 	"net/http"
-	"remix-api/models"
 )
 
 type ConfigController struct {

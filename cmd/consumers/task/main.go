@@ -1,6 +1,11 @@
 package main
 
 import (
+	"remix-api/configs"
+	"remix-api/internal/cache"
+	"remix-api/internal/logs"
+	"remix-api/internal/mq"
+	"remix-api/models"
 	"bufio"
 	"bytes"
 	"fmt"
@@ -9,14 +14,17 @@ import (
 	"log"
 	"os"
 	"os/exec"
-	"remix-api/configs"
-	"remix-api/internal/logs"
-	"remix-api/internal/mq"
-	"remix-api/models"
 	"strconv"
 	"strings"
 	"time"
 )
+
+func init()  {
+	configs.Setup()
+	cache.Setup()
+	mq.Setup()
+	models.Setup()
+}
 
 func main() {
 	ch, err := mq.RabbitMQ.NewChannel()
@@ -124,8 +132,7 @@ func main() {
 
 			if task.Type == models.TaskTypeRemix {
 				scriptPath = configs.Config.Command.Python.RemixScript
-				remixType, _ := strconv.ParseUint(fmt.Sprintf("%v", task.Other["remix_type"]), 10, 10)
-				tpl := configs.Config.Task.Remix.TemplateFolders[remixType]
+				tpl := fmt.Sprintf("%v", task.Other["remix_type"])
 				sentences := strings.Split(fmt.Sprintf("%v", task.Other["text"]), ",")
 				err = runRemixCommand(tpl, realConvertPath, sentences)
 			} else {

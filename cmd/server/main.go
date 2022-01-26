@@ -1,12 +1,22 @@
 package main
 
 import (
-	"fmt"
 	"remix-api/api/routers"
 	"remix-api/configs"
+	"remix-api/internal/cache"
 	"remix-api/internal/logs"
+	"remix-api/internal/mq"
+	"remix-api/models"
+	"fmt"
 	"time"
 )
+
+func init()  {
+	configs.Setup()
+	cache.Setup()
+	mq.Setup()
+	models.Setup()
+}
 
 func main() {
 	router := routers.InitRouter()

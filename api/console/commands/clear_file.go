@@ -1,13 +1,13 @@
 package commands
 
 import (
-	"remix-api/configs"
-	"remix-api/internal/logs"
-	"remix-api/models"
 	"fmt"
 	"github.com/trumanwong/go-internal/util"
 	"log"
 	"os"
+	"remix-api/configs"
+	"remix-api/internal/logs"
+	"remix-api/models"
 	"time"
 )
 

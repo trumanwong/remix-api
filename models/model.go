@@ -1,8 +1,6 @@
 package models
 
 import (
-	"remix-api/configs"
-	"remix-api/internal/logs"
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -10,6 +8,8 @@ import (
 	"gorm.io/gorm/schema"
 	"log"
 	"os"
+	"remix-api/configs"
+	"remix-api/internal/logs"
 	"strconv"
 	"time"
 )
@@ -23,7 +23,7 @@ type Model struct {
 	UpdatedAt time.Time `gorm:"column:updated_at" json:"updated_at"`
 }
 
-func init() {
+func Setup() {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", configs.Config.MySQL.User, configs.Config.MySQL.Password, configs.Config.MySQL.Host+":"+configs.Config.MySQL.Port, configs.Config.MySQL.Database)
 	newLogger := logs.NewLogger(
 		log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer

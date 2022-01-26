@@ -1,13 +1,13 @@
 package cache
 
 import (
-	cache2 "github.com/trumanwong/go-internal/cache"
 	"remix-api/configs"
+	cache2 "github.com/trumanwong/go-internal/cache"
 )
 
 var Cache *cache2.Cache
 
-func init() {
+func Setup() {
 	Cache = cache2.NewCache(
 		configs.Config.Redis.Addr,
 		configs.Config.Redis.Password,

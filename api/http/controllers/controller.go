@@ -1,14 +1,14 @@
 package controllers
 
 import (
+	"remix-api/configs"
+	"remix-api/models"
 	"errors"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/trumanwong/go-internal/util"
 	"net/http"
 	"os"
-	"remix-api/configs"
-	"remix-api/models"
 )
 
 type Controller struct {

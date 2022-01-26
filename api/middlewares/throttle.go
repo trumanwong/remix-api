@@ -1,10 +1,10 @@
 package middlewares
 
 import (
-	"remix-api/internal/util"
 	"github.com/didip/tollbooth"
 	"github.com/didip/tollbooth/limiter"
 	"github.com/gin-gonic/gin"
+	"github.com/trumanwong/go-internal/util"
 	"net/http"
 	"time"
 )

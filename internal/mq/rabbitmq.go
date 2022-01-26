@@ -14,7 +14,7 @@ const (
 var RabbitMQ *rabbitmq.RabbitMQ
 var err error
 
-func init() {
+func Setup() {
 	RabbitMQ, err = rabbitmq.NewRabbitMQ(configs.Config.RabbitMQ.Url)
 	if err != nil {
 		util.PushWeChatRobot(

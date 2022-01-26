@@ -122,7 +122,7 @@ var Config *GlobalConfig
 
 var c = flag.String("c", "", "配置文件路径")
 
-func init() {
+func Setup() {
 	flag.Parse()
 	var data []byte
 	var err error

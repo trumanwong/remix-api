@@ -16,5 +16,5 @@ type AccessLog struct {
 }
 
 func (this AccessLog) IndexName() string {
-	return "qnw_api_access_logs"
+	return "blog_api_access_logs"
 }
